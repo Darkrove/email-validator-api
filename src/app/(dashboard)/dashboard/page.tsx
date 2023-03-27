@@ -1,3 +1,4 @@
+import LargeHeading from "@/components/ui/LargeHeading";
 import type { Metadata } from "next";
 import { FC } from "react";
 
@@ -9,7 +10,11 @@ export const metadata: Metadata = {
 };
 
 const page: FC<pageProps> = ({}) => {
-  return <div>page</div>;
+  return (
+    <div>
+      <LargeHeading>Hello Sajjad Shaikh</LargeHeading>
+    </div>
+  );
 };
 
 export default page;
