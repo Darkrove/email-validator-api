@@ -16,11 +16,11 @@ const Navbar = async () => {
         <Link href="/" className={buttonVariants({ variant: "link" })}>
           Email Validator v1.0
         </Link>
-        <div className="md:hidden">
+        {/* <div className="md:hidden">
           <ThemeToggle />
-        </div>
+        </div> */}
         <div className="hidden md:flex gap-4">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <Link
             href="/documentation"
             className={buttonVariants({ variant: "ghost" })}

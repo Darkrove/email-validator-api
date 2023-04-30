@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/Toast";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Toaster position="bottom-right" />
           {/* @ts-expect-error server Component */}
           <Navbar />
+          <Footer />
         </Providers>
         <div className="h-40 md:hidden" />
       </body>
