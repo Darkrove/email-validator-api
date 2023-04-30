@@ -1,9 +1,9 @@
 export const nodejs = `const axios = require("axios");
 const options = {
     method: 'POST',
-    url: 'http://textanalysisapi.vercel.app/api/v1/analysis',
+    url: 'http://emailvalidatorv1.vercel.app/api/v1/validate',
     params: {
-      text: 'Your text',
+      email: 'Your email',
     },
     headers: {
       'Authorization': 'YOUR_API_KEY',
@@ -17,14 +17,14 @@ axios.request(options).then(function (response) {
 });`;
 
 export const python = `import requests
-url = 'http://textanalysisapi.vercel.app/api/v1/analysis'
+url = 'http://emailvalidatorv1.vercel.app/api/v1/validate'
 api_key = 'YOUR_API_KEY'
-text = 'Your text'
+email = 'Your email'
 headers = {
     'Authorization': api_key
 }
 payload = {
-    'text': text,
+    'email': email,
 }
 response = requests.post(url, headers=headers, json=payload)
 if response.status_code == 200:
@@ -43,7 +43,7 @@ import (
 )
 
 func main() {
-	url := "http://textanalysisapi.vercel.app/api/v1/analysis"
+	url := "http://emailvalidatorv1.vercel.app/api/v1/validate"
 	data := map[string]string{"text": "Your text"}
 	jsonData, _ := json.Marshal(data)
 
@@ -72,7 +72,7 @@ func main() {
 }`;
 
 export const curl = `curl --request POST
---url http://textanalysisapi.vercel.app/api/v1/analysis
+--url http://emailvalidatorv1.vercel.app/api/v1/validate
 --header 'Authorization: YOUR_API_KEY'
 --header 'Content-Type: application/json'
---data '{"text":"Your text"}'`;
+--data '{"email":"Your email"}'`;

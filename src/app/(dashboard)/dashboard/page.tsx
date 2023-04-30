@@ -6,17 +6,17 @@ import ApiDashboard from "@/components/ApiDashboard";
 import RequestApiKey from "@/components/RequestApiKey";
 import LargeHeading from "@/components/ui/LargeHeading";
 import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/prisma";
 
 export const metadata: Metadata = {
-  title: "Text Analysis API | Dashboard",
-  description: "Free and open-source text analysis API",
+  title: "Email Validator API | Dashboard",
+  description: "Free and open-source email validator API",
 };
 
 const page = async ({}) => {
   const user = await getServerSession(authOptions);
   if (!user) return <p>no user ❌</p>;
-  const apiKey = await db.apiKey.findFirst({
+  const apiKey = await prisma.apiKey.findFirst({
     where: { userId: user.user.id },
   });
   return (

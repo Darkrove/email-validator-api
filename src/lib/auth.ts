@@ -1,5 +1,5 @@
 import { NextAuthOptions } from "next-auth";
-import { db } from "@/lib/db";
+import prisma from "@/lib/prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -16,7 +16,7 @@ function getGoogleCrediantials() {
 }
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db),
+  adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },
@@ -40,21 +40,21 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async jwt({ token, user }) {
-      const dbUser = await db.user.findFirst({
+      const prismaUser = await prisma.user.findFirst({
         where: {
           email: token.email,
         },
       });
 
-      if (!dbUser) {
+      if (!prismaUser) {
         token.id = user!.id;
         return token;
       }
       return {
-        id: dbUser.id,
-        name: dbUser.name,
-        email: dbUser.email,
-        picture: dbUser.image,
+        id: prismaUser.id,
+        name: prismaUser.name,
+        email: prismaUser.email,
+        picture: prismaUser.image,
       };
     },
     redirect() {

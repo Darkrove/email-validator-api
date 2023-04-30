@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import SignInButton from "@/ui/SignInButton";
 import SignOutButton from "@/ui/SignOutButton";
-import { buttonVariants } from "@/ui/Button";
+import { Button, buttonVariants } from "@/ui/Button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { authOptions } from "@/lib/auth";
 
@@ -14,7 +14,7 @@ const Navbar = async () => {
     <div className="fixed backdrop-blur-sm bg-white/75 dark:bg-stone-900 z-50 top-0 left-0 right-0 h-20 border-b border-stone-300 dark:border-stone-700 shadow-sm flex items-center justify-between">
       <div className="container max-w-7xl mx-auto w-full flex justify-between items-center">
         <Link href="/" className={buttonVariants({ variant: "link" })}>
-          Text Analaysis API 1.0
+          Email Validator v1.0
         </Link>
         <div className="md:hidden">
           <ThemeToggle />

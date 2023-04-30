@@ -10,8 +10,8 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Text Analysis API | Home",
-  description: "Free and open-source text analysis API",
+  title: "Email Validator API | Home",
+  description: "Free and open-source email validator API",
 };
 
 export default function Home() {
@@ -23,13 +23,12 @@ export default function Home() {
             size="lg"
             className="three-d text-dark-silver dark:text-light-silver"
           >
-            Easily analyze <br />
-            your text.
+            Easily validate <br />
+            your email.
           </LargeHeading>
           <Paragraph className="max-w-xl lg:text-left">
-            With the text analysis API, you can easily determine sentiments{" "}
-            <br />
-            from text with a free{" "}
+            With the Email Validator API, you can easily validate Email <br />
+            with a free{" "}
             <Link
               href="/login"
               className="underline underline-offset-2 text-dark-silver dark:text-light-silver"
@@ -40,11 +39,11 @@ export default function Home() {
           <div className="relative w-full max-w-lg lg:max-w-3xl lg:left-1/2 aspect-square lg:absolute">
             <Image
               priority
-              className="img-shadow"
+              className=""
               quality={100}
               style={{ objectFit: "contain" }}
               fill
-              src="/metal@hero.png"
+              src="/monkey@hero.png"
               alt="Hero image"
             />
           </div>
