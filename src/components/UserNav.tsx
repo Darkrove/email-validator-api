@@ -43,11 +43,11 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
+            <LayoutDashboard className="mr-2 h-4 w-4" />
             <Link href="/dashboard">
-              <LayoutDashboard className="mr-2 h-4 w-4" />
               <span>Dashboard</span>
-              <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
             </Link>
+            <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
