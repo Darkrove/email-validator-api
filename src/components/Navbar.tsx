@@ -5,7 +5,7 @@ import MobileNavWrapper from "@/components/MobileNavWrapper";
 import SignInButton from "@/ui/SignInButton";
 import SignOutButton from "@/ui/SignOutButton";
 import { Button, buttonVariants } from "@/ui/Button";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { UserNav } from "@/components/UserNav";
 import { authOptions } from "@/lib/auth";
 import { navConfig } from "@/config/nav";
 import { siteConfig } from "@/config/site";
@@ -31,16 +31,10 @@ const Navbar = async () => {
             <span className="font-bold">{siteConfig.name}</span>
           </div>
         </Link>
-        <div className="md:hidden">
-          {session ? (
-            <Avatar>
-              <AvatarImage src={session?.user.image ?? ""} />
-              <AvatarFallback>{fallback}</AvatarFallback>
-            </Avatar>
-          ) : null}
-        </div>
 
-        <div className="hidden md:flex gap-4">
+        <div className="md:hidden">{session ? <UserNav /> : null}</div>
+
+        <div className="hidden md:flex justify-between items-center gap-4">
           <Link
             href="/documentation"
             className={buttonVariants({ variant: "ghost" })}
@@ -49,17 +43,7 @@ const Navbar = async () => {
           </Link>
           {session ? (
             <>
-              <Link
-                className={buttonVariants({ variant: "ghost" })}
-                href="/dashboard"
-              >
-                Dashboard
-              </Link>
-              <SignOutButton />
-              <Avatar>
-                <AvatarImage src={session?.user.image ?? ""} />
-                <AvatarFallback>{fallback}</AvatarFallback>
-              </Avatar>
+              <UserNav />
             </>
           ) : (
             <SignInButton />

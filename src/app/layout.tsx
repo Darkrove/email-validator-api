@@ -6,8 +6,7 @@ import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/Toast";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fontSans } from "@/lib/fonts";
 
 export default function RootLayout({
   children,
@@ -15,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={cn("bg-white text-stone-900 antialiased ", inter.className)}
-    >
-      <body className="min-h-screen bg-stone-50 dark:bg-stone-900 antialiased">
+    <html lang="en">
+      <body
+        className={cn(
+          "min-h-screen bg-stone-50 font-sans text-stone-900 antialiased dark:bg-stone-900 dark:text-stone-50",
+          fontSans.variable
+        )}
+      >
         <Providers>
           {children}
           <Toaster position="bottom-right" />
