@@ -46,7 +46,7 @@ export function UserNav({ session }: Props) {
         <Button variant="ghost" className="relative w-9 h-9 rounded-full">
           <Avatar className="w-9 h-9">
             <AvatarImage src={session?.user.image ?? ""} alt="@shadcn" />
-            <AvatarFallback>{fallback}</AvatarFallback>
+            <AvatarFallback className="text-white">{fallback}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
