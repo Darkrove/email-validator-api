@@ -4,7 +4,7 @@ export interface CreateApiData {
   createdApiKey: ApiKey | null;
 }
 
-export interface RevokeAPiData {
+export interface RevokeApiData {
   error: string | ZodIssue[] | null;
   success: boolean;
 }
