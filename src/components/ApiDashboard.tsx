@@ -42,7 +42,7 @@ const ApiDashboard = async ({}) => {
           Your API key:
         </Paragraph>
 
-        <div className="flex flex-col md:flex-row justify-center items-center space-x-2 md:items-start">
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-2 md:items-start">
           <div className="relative w-full md:w-auto">
             <Input
               className="w-full md:w-auto text-center md:text-left pr-12 py-2 rounded-md truncate"
