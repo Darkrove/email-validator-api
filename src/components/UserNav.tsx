@@ -20,23 +20,44 @@ import {
 } from "@/ui/DropdownMenu";
 import Link from "next/link";
 
-export function UserNav() {
+interface NextAuthSession {
+  user: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+  };
+  accessToken?: string | null;
+  expires?: string;
+}
+
+type Props = {
+  session: NextAuthSession;
+};
+
+export function UserNav({ session }: Props) {
+  const fallback = session?.user.name
+    ?.split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative w-10 h-10 rounded-full">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>SS</AvatarFallback>
+        <Button variant="ghost" className="relative w-9 h-9 rounded-full">
+          <Avatar className="w-9 h-9">
+            <AvatarImage src={session?.user.image ?? ""} alt="@shadcn" />
+            <AvatarFallback>{fallback}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">sajjad shaikh</p>
-            <p className="text-xs leading-none text-muted-foreground">
-              samaralishaikh212@gmail.com
+            <p className="text-sm font-medium leading-none">
+              {session.user.name}
+            </p>
+            <p className="text-xs leading-none text-zinc-400">
+              {session.user.email}
             </p>
           </div>
         </DropdownMenuLabel>

@@ -14,11 +14,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/ui/Avatar";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
-  const fallback = session?.user.name
-    ?.split(" ")
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
   return (
     <div className="fixed backdrop-blur-sm bg-white/75 dark:bg-stone-900 z-50 top-0 left-0 right-0 h-20 border-b border-stone-300 dark:border-stone-700 shadow-sm flex items-center justify-between">
       <div className="container max-w-7xl mx-auto w-full flex justify-between items-center">
@@ -32,7 +27,9 @@ const Navbar = async () => {
           </div>
         </Link>
 
-        <div className="md:hidden">{session ? <UserNav /> : null}</div>
+        <div className="md:hidden items-center justify-center flex">
+          {session ? <UserNav session={session} /> : null}
+        </div>
 
         <div className="hidden md:flex justify-between items-center gap-4">
           <Link
@@ -43,7 +40,7 @@ const Navbar = async () => {
           </Link>
           {session ? (
             <>
-              <UserNav />
+              <UserNav session={session} />
             </>
           ) : (
             <SignInButton />
