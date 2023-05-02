@@ -9,6 +9,7 @@ import Paragraph from "@/ui/Paragraph";
 import { Input } from "@/ui/Input";
 import ApiKeyOptions from "@/components/ApiKeyOptions";
 import Table from "@/ui/Table";
+import CopyButton from "./CopyButton";
 
 const ApiDashboard = async ({}) => {
   const user = await getServerSession(authOptions);
@@ -37,9 +38,26 @@ const ApiDashboard = async ({}) => {
     <div className="container flex flex-col gap-6">
       <LargeHeading>Welcome back, {user.user.name}</LargeHeading>
       <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start items-center">
-        <Paragraph>Your API key:</Paragraph>
-        <Input className="w-fit truncate" readOnly value={activeApiKey.key} />
-        <ApiKeyOptions apiKeyKey={activeApiKey.key} />
+        <Paragraph className="text-center md:text-left mb-2 md:mb-0">
+          Your API key:
+        </Paragraph>
+
+        <div className="flex flex-col md:flex-row justify-center items-center space-x-2 md:items-start">
+          <div className="relative w-full md:w-auto">
+            <Input
+              className="w-full md:w-auto text-center md:text-left pr-12 py-2 rounded-md truncate"
+              readOnly
+              value="hdqmpGx-2DI_-Nul6wXO1hdqmpGx-2DI_-Nul6wXO1hdqmpGx-2DI_-Nul6wXO1"
+            />
+
+            <CopyButton
+              className="absolute right-0 top-0 bottom-0 rounded-md text-white transition duration-300"
+              valueToCopy={activeApiKey.key}
+            />
+          </div>
+
+          <ApiKeyOptions apiKeyKey={activeApiKey.key} />
+        </div>
       </div>
 
       <Paragraph className="text-center md:text-left mt-4 -mb-4">

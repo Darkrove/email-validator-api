@@ -1,7 +1,7 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Copy } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Button } from "@/ui/Button";
 import { toast } from "@/ui/Toast";
@@ -15,13 +15,17 @@ const CopyButton: FC<CopyButtonProps> = ({
   className,
   ...props
 }) => {
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+  useEffect(() => {
+    setTimeout(() => setIsCopied(false), 5000);
+  }, [isCopied]);
   return (
     <Button
       {...props}
       type="button"
       onClick={() => {
         navigator.clipboard.writeText(valueToCopy);
-
+        setIsCopied(true);
         toast({
           title: "Copied",
           message: "API key copied to clipboard",
@@ -31,7 +35,11 @@ const CopyButton: FC<CopyButtonProps> = ({
       variant="ghost"
       className={cn("", className)}
     >
-      <Copy className="h-5 w-5" />
+      {isCopied ? (
+        <Check className="h-5 w-5 text-green-400" />
+      ) : (
+        <Copy className="h-5 w-5" />
+      )}
     </Button>
   );
 };
