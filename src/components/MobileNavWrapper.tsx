@@ -5,7 +5,7 @@ import { MainNavItem } from "@/types";
 import React from "react";
 import { MobileNav } from "@/components/MobileNav";
 import { Icons } from "@/components/Icons";
-
+import { siteConfig } from "@/config/site";
 interface MainNavProps {
   items?: MainNavItem[];
   children?: React.ReactNode;
@@ -19,7 +19,8 @@ const MobileNavWrapper = ({ items, children }: MainNavProps) => {
         className="flex items-center space-x-2 md:hidden text-stone-900 dark:text-stone-100"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+        <span className="font-bold">{siteConfig.name}</span>
       </button>
       {showMobileMenu && items && (
         <MobileNav items={items}>{children}</MobileNav>

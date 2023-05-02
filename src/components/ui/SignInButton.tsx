@@ -22,11 +22,7 @@ const SignInButton: FC<SignInButtonProps> = ({}) => {
       });
     }
   };
-  return (
-    <Button onClick={signInWithGoogle} isLoading={isLoading}>
-      Sign in{" "}
-    </Button>
-  );
+  return <Button onClick={signInWithGoogle}>Sign in </Button>;
 };
 
 export default SignInButton;

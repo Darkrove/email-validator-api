@@ -20,15 +20,17 @@ const Navbar = async () => {
         <div className="md:hidden">
           <MobileNavWrapper items={navConfig.mainNav} />
         </div>
-        <Link href="/" className={buttonVariants({ variant: "link" })}>
-          <div className="flex items-center space-x-2">
-            <Icons.logo />
-            <span className="font-bold">{siteConfig.name}</span>
-          </div>
-        </Link>
+        <div className="hidden md:block">
+          <Link href="/" className={buttonVariants({ variant: "link" })}>
+            <div className="flex items-center space-x-2">
+              <Icons.logo />
+              <span className="font-bold">{siteConfig.name}</span>
+            </div>
+          </Link>
+        </div>
 
         <div className="md:hidden items-center justify-center flex">
-          {session ? <UserNav session={session} /> : null}
+          {session ? <UserNav session={session} /> : <SignInButton />}
         </div>
 
         <div className="hidden md:flex justify-between items-center gap-4">
