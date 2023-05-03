@@ -1,7 +1,7 @@
 export const nodejs = `const axios = require("axios");
 const options = {
     method: 'POST',
-    url: 'http://emailvalidatorv1.vercel.app/api/v1/validate',
+    url: 'https://emailvalidatorv1.vercel.app/api/v1/validate',
     params: {
       email: 'Your email',
     },
@@ -17,7 +17,7 @@ axios.request(options).then(function (response) {
 });`;
 
 export const python = `import requests
-url = 'http://emailvalidatorv1.vercel.app/api/v1/validate'
+url = 'https://emailvalidatorv1.vercel.app/api/v1/validate'
 api_key = 'YOUR_API_KEY'
 email = 'Your email'
 headers = {
@@ -72,7 +72,7 @@ func main() {
 }`;
 
 export const curl = `curl --request POST
---url http://emailvalidatorv1.vercel.app/api/v1/validate
+--url https://emailvalidatorv1.vercel.app/api/v1/validate
 --header 'Authorization: YOUR_API_KEY'
 --header 'Content-Type: application/json'
 --data '{"email":"Your email"}'`;
