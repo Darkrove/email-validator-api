@@ -1,10 +1,10 @@
 import { withMethods } from "@/lib/api-middleware/with-methods";
 import { authOptions } from "@/lib/auth";
+import db from "@/lib/prisma";
+import { CreateApiData } from "@/types/api";
+import { nanoid } from "nanoid";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import { CreateApiData } from "@/types/api";
-import db from "@/lib/prisma";
-import { nanoid } from "nanoid";
 import { z } from "zod";
 
 const handler = async (
@@ -18,20 +18,18 @@ const handler = async (
 
     if (!user) {
       return res.status(401).json({
-        error: "Unauthorized",
+        error: "Unauthorized to perform this action.",
         createdApiKey: null,
       });
     }
+
     const existingApiKey = await db.apiKey.findFirst({
-      where: {
-        userId: user.id,
-        enabled: true,
-      },
+      where: { userId: user.id, enabled: true },
     });
 
     if (existingApiKey) {
       return res.status(400).json({
-        error: "You already have an API key",
+        error: "You already have a valid API key.",
         createdApiKey: null,
       });
     }
@@ -39,24 +37,20 @@ const handler = async (
     const createdApiKey = await db.apiKey.create({
       data: {
         userId: user.id,
-        key: nanoid(),
+        key: nanoid(32),
       },
     });
-    return res.status(200).json({
-      error: null,
-      createdApiKey: createdApiKey,
-    });
+
+    return res.status(200).json({ error: null, createdApiKey });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
-        error: error.issues,
-        createdApiKey: null,
-      });
+      return res.status(400).json({ error: error.issues, createdApiKey: null });
     }
-    return res.status(500).json({
-      error: "Internal Server Error",
-      createdApiKey: null,
-    });
+
+    return res
+      .status(500)
+      .json({ error: "Internal Server Error", createdApiKey: null });
   }
 };
+
 export default withMethods(["GET"], handler);
