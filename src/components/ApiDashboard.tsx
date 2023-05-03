@@ -52,7 +52,7 @@ const ApiDashboard = async ({}) => {
             />
 
             <CopyButton
-              className="absolute right-0 top-0 bottom-0 rounded-md text-white transition duration-300"
+              className="absolute right-0 top-0 bottom-0 rounded-md transition duration-300"
               valueToCopy={activeApiKey.key}
             />
           </div>
