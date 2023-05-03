@@ -31,7 +31,7 @@ export default function Home() {
             </PageHeaderHeading>
             <PageHeaderDescription className="max-w-xl lg:text-left">
               <Paragraph className="max-w-xl lg:text-left">
-                With the Email Validator API, you can easily validate Email with
+                With the Email Validator API, you can easily validate email with
                 a free{" "}
                 <Link
                   href="/login"

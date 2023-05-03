@@ -21,10 +21,7 @@ const Navbar = async () => {
           <MobileNavWrapper items={navConfig.mainNav} />
         </div>
         <div className="hidden md:block">
-          <Link
-            href="/"
-            className={buttonVariants({ variant: "link" }) + "p-0"}
-          >
+          <Link href="/" className={buttonVariants({ variant: "link" })}>
             <div className="flex items-center space-x-2">
               <Icons.logo />
               <span className="font-bold">{siteConfig.name}</span>
