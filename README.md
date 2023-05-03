@@ -1,38 +1,119 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Email Validator API
 
-## Getting Started
+With the Email Validator API, you can easily validate email with a free [API Key](https://emailvalidatorv1.vercel.app/login)
 
-First, run the development server:
+## Features
+
+- Validates email addresses using regex pattern
+
+- Returns JSON response with validation status and error message (if any)
+
+- Multi language support 
+
+## Requirements
+
+- Node.js 12.x or higher
+
+- npm
+
+## Installation
+
+Install my-project with npm
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+  git clone https://github.com/Darkrove/email-validator-api.git
+
+  cd email-validator-api
+
+  yarn install 
+
+  yarn dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage/Examples
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To use the client, you will need to have an API key from the Email Validator API. You can obtain an API key by signing up on the Email Validator API website.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Once you have your API key, you can create a new instance of the client by passing the API key as a parameter:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Example request:
 
-## Learn More
+```javascript
 
-To learn more about Next.js, take a look at the following resources:
+const axios = require('axios');
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+class EmailValidatorApiClient {
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    constructor(apiKey) {
 
-## Deploy on Vercel
+        this.apiKey = apiKey;
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+        this.baseUrl = 'http://emailvalidatorv1.vercel.app/api/v1';
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    }
+
+    async validate(emails) {
+
+        try {
+
+            const response = await axios.post(`${this.baseUrl}/validate`, {
+
+                emails: emails
+
+            }, {
+
+                headers: {
+
+                    Authorization: this.apiKey
+
+                }
+
+            });
+
+            return response.data;
+
+        } catch (error) {
+
+            throw error;
+
+        }
+
+    }
+
+}
+
+module.exports = EmailValidatorApiClient;
+
+```
+
+You can then use the `validate` method of the client to `validate` email addresses. The validate method takes an array of email addresses as its parameter, and returns a Promise that resolves with an object containing the validation status and error message (if any) for each email address:
+
+```javascript 
+
+const EmailValidatorApiClient = require('email-validator-api-client');
+
+const apiKey = 'YOUR_API_KEY';
+
+const apiClient = new EmailValidatorApiClient(apiKey);
+
+apiClient.validate(['test@example.com', 'invalidemail']).then((response) => {
+
+    console.log(response);
+
+}).catch((error) => {
+
+    console.error(error);
+
+});
+
+```
+
+## Contributing
+
+Contributions are welcome! If you find any issues with the client or want to suggest an improvement, feel free to submit a pull request or open an issue.
+
+See `contributing.md` for ways to get started.
