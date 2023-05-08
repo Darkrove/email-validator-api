@@ -73,7 +73,7 @@ export default function Home() {
               quality={100}
               style={{ objectFit: "contain" }}
               fill
-              src="desktop.png"
+              src="/monkey-copy@hero.png"
               alt="Hero image"
             />
           </div>
