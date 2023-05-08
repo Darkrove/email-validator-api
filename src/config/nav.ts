@@ -6,13 +6,5 @@ export const navConfig: NavConfig = {
       title: "Documentation",
       href: "/documentation",
     },
-    {
-      title: "Login",
-      href: "/login",
-    },
-    {
-      title: "Dashboard",
-      href: "/dashboard",
-    },
   ],
 };
