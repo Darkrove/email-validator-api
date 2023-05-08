@@ -33,7 +33,7 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
       <Button
         isLoading={isLoading}
         type="button"
-        className="max-w-sm w-full bg-stone-400"
+        className="max-w-sm w-full bg-black"
         onClick={loginWithGoogle}
         disabled={isLoading}
       >

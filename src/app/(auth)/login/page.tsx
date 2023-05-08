@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/Button";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
 import UserAuthForm from "@/components/UserAuthForm";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -15,14 +16,15 @@ const page: FC = () => {
             <Link
               className={buttonVariants({
                 variant: "ghost",
-                className: "w-fit",
+                className:
+                  "before:absolute left-4 top-4 md:left-8 md:top-8 w-fit",
               })}
               href="/"
             >
               <Icons.chevronLeft className="mr-2 h-4 w-4" />
               Back to home
             </Link>
-
+            <Icons.logo className="text-black dark:text-white h-16 w-16" />
             <LargeHeading>Welcome back!</LargeHeading>
             <Paragraph>Please sign in using your Google account.</Paragraph>
           </div>
