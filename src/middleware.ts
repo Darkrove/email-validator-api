@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
+const secret = process.env.NEXTAUTH_SECRET;
+
 const redis = new Redis({
   url: process.env.REDIS_URL,
   token: process.env.REDIS_SECRET,
@@ -32,9 +34,9 @@ export default withAuth(
     }
 
     // Manage route protection
-    const token = await getToken({ req });
+    const token = await getToken({ req, secret });
+    console.log(token);
     const isAuth = !!token;
-    console.log("isAuth", isAuth);
     const isAuthPage = req.nextUrl.pathname.startsWith("/login");
 
     const sensitiveRoutes = ["/dashboard"];
@@ -47,7 +49,10 @@ export default withAuth(
       return null;
     }
 
-    if (!isAuth) {
+    if (
+      !isAuth &&
+      sensitiveRoutes.some((route) => pathname.startsWith(route))
+    ) {
       let from = req.nextUrl.pathname;
       if (req.nextUrl.search) {
         from += req.nextUrl.search;
@@ -71,5 +76,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/login", "/dashboard/:path*", "/api/:path*"],
+  matcher: ["/", "/login", "/dashboard/:path*", "/api/:path*"],
 };
