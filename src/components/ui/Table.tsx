@@ -76,7 +76,7 @@ const Table: FC<TableProps> = ({ userRequests }) => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 4,
             },
           },
         }}
