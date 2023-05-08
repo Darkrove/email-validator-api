@@ -8,6 +8,7 @@ const redis = new Redis({
   url: process.env.REDIS_URL,
   token: process.env.REDIS_SECRET,
 });
+
 const ratelimit = new Ratelimit({
   redis: redis,
   limiter: Ratelimit.slidingWindow(50, "1 h"),
@@ -36,6 +37,7 @@ export default withAuth(
     const isAuthPage = req.nextUrl.pathname.startsWith("/login");
 
     const sensitiveRoutes = ["/dashboard"];
+
     if (isAuthPage) {
       if (isAuth) {
         return NextResponse.redirect(new URL("/dashboard", req.url));
@@ -43,6 +45,7 @@ export default withAuth(
 
       return null;
     }
+
     if (
       !isAuth &&
       sensitiveRoutes.some((route) => pathname.startsWith(route))
