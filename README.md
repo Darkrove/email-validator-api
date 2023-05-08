@@ -16,24 +16,7 @@ With the Email Validator API, you can easily validate email with a free [API Key
 
 - npm
 
-## Installation
-
-Install my-project with npm
-
-```bash
-
-  git clone https://github.com/Darkrove/email-validator-api.git
-
-  cd email-validator-api
-
-  yarn install 
-
-  yarn dev
-
-```
-
     
-
 ## Usage/Examples
 
 To use the client, you will need to have an API key from the Email Validator API. You can obtain an API key by signing up on the Email Validator API website.
@@ -47,70 +30,55 @@ Example request:
 const axios = require('axios');
 
 class EmailValidatorApiClient {
-
     constructor(apiKey) {
-
         this.apiKey = apiKey;
-
         this.baseUrl = 'http://emailvalidatorv1.vercel.app/api/v1';
-
     }
-
+    
     async validate(emails) {
-
         try {
-
             const response = await axios.post(`${this.baseUrl}/validate`, {
-
                 emails: emails
-
             }, {
-
                 headers: {
-
                     Authorization: this.apiKey
-
                 }
-
             });
-
             return response.data;
-
         } catch (error) {
-
             throw error;
-
         }
-
     }
-
 }
-
 module.exports = EmailValidatorApiClient;
-
 ```
 
-You can then use the `validate` method of the client to `validate` email addresses. The validate method takes an array of email addresses as its parameter, and returns a Promise that resolves with an object containing the validation status and error message (if any) for each email address:
+You can then use the `validate` method of the client to `validate` email addresses. Once you have created a new instance of the `EmailValidatorApiClient` by passing your API key as a parameter, you can use the `validate` method of the client to validate email addresses.
 
-```javascript 
+Here's an example of how to use the `validate` method:
 
+```javascript
 const EmailValidatorApiClient = require('email-validator-api-client');
 
-const apiKey = 'YOUR_API_KEY';
+// Replace 'your_api_key_here' with your actual API key
+const apiKey = 'your_api_key_here';
 
-const apiClient = new EmailValidatorApiClient(apiKey);
+const emailValidator = new EmailValidatorApiClient(apiKey);
 
-apiClient.validate(['test@example.com', 'invalidemail']).then((response) => {
+const email = 'test@example.com';
 
-    console.log(response);
-
-}).catch((error) => {
-
+emailValidator.validate(email)
+  .then((validationResult) => {
+    console.log(validationResult);
+  })
+  .catch((error) => {
     console.error(error);
-
-});
-
+  });
 ```
+
+The `validate` method takes an email address as its parameter and returns a promise that resolves with a validation result object for the email address.
+
+Note that the `validate` method only validates one email address at a time. If you need to validate multiple email addresses, you can call the `validate` method multiple times with different email addresses.
 
 ## Contributing
 
