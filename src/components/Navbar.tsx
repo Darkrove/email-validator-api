@@ -34,12 +34,15 @@ const Navbar = async () => {
         </div>
 
         <div className="hidden md:flex justify-between items-center gap-4">
-          <Link
-            href="/documentation"
-            className={buttonVariants({ variant: "ghost" })}
-          >
-            Documentation
-          </Link>
+          {navConfig.mainNav.map((item, index) => (
+            <Link
+              key={index}
+              href={item.disabled ? "#" : item.href}
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              {item.title}
+            </Link>
+          ))}
           {session ? (
             <>
               <UserNav session={session} />
