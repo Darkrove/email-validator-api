@@ -15,11 +15,6 @@ import {
 } from "@/components/PageHeader";
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Email Validator API | Home",
-  description: "Free and open-source email validator API",
-};
-
 export default function Home() {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-x-hidden">

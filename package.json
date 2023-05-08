@@ -2,6 +2,10 @@
   "name": "api-service",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "sajjad shaikh",
+    "url": "https://github.com/Darkrove"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
