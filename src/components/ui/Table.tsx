@@ -70,7 +70,7 @@ const Table: FC<TableProps> = ({ userRequests }) => {
           backgroundColor: applicationTheme === "light" ? "white" : "#44403c",
           fontSize: "1rem",
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[4]}
         disableRowSelectionOnClick
         autoHeight
         initialState={{
