@@ -34,6 +34,7 @@ export default withAuth(
     // Manage route protection
     const token = await getToken({ req });
     const isAuth = !!token;
+    console.log("isAuth", isAuth);
     const isAuthPage = req.nextUrl.pathname.startsWith("/login");
 
     const sensitiveRoutes = ["/dashboard"];
