@@ -48,7 +48,7 @@ const ApiDashboard = async ({}) => {
             <Input
               className="w-full md:w-auto text-center md:text-left pr-12 py-2 rounded-md truncate"
               readOnly
-              value="hdqmpGx-2DI_-Nul6wXO1hdqmpGx-2DI_-Nul6wXO1hdqmpGx-2DI_-Nul6wXO1"
+              value={activeApiKey.key}
             />
 
             <CopyButton
