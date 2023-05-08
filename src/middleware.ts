@@ -34,21 +34,27 @@ export default withAuth(
     // Manage route protection
     const token = await getToken({ req });
     const isAuth = !!token;
-    const isAuthPage = pathname.startsWith("/login");
+    const isAuthPage = req.nextUrl.pathname.startsWith("/login");
 
     const sensitiveRoutes = ["/dashboard"];
+
     if (isAuthPage) {
       if (isAuth) {
         return NextResponse.redirect(new URL("/dashboard", req.url));
       }
+
       return null;
     }
 
-    if (
-      !isAuth &&
-      sensitiveRoutes.some((route) => pathname.startsWith(route))
-    ) {
-      return NextResponse.redirect(new URL("/login", req.url));
+    if (!isAuth) {
+      let from = req.nextUrl.pathname;
+      if (req.nextUrl.search) {
+        from += req.nextUrl.search;
+      }
+
+      return NextResponse.redirect(
+        new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
+      );
     }
   },
   {
