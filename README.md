@@ -8,7 +8,7 @@ With the Email Validator API, you can easily validate email with a free [API Key
 
 - Returns JSON response with validation status and error message (if any)
 
-- Multi language support 
+- Multi language support
 
 ## Requirements
 
@@ -16,7 +16,6 @@ With the Email Validator API, you can easily validate email with a free [API Key
 
 - npm
 
-    
 ## Usage/Examples
 
 To use the client, you will need to have an API key from the Email Validator API. You can obtain an API key by signing up on the Email Validator API website.
@@ -26,29 +25,32 @@ Once you have your API key, you can create a new instance of the client by passi
 Example request:
 
 ```javascript
-
-const axios = require('axios');
+const axios = require("axios");
 
 class EmailValidatorApiClient {
-    constructor(apiKey) {
-        this.apiKey = apiKey;
-        this.baseUrl = 'http://emailvalidatorv1.vercel.app/api/v1';
-    }
-    
-    async validate(emails) {
-        try {
-            const response = await axios.post(`${this.baseUrl}/validate`, {
-                emails: emails
-            }, {
-                headers: {
-                    Authorization: this.apiKey
-                }
-            });
-            return response.data;
-        } catch (error) {
-            throw error;
+  constructor(apiKey) {
+    this.apiKey = apiKey;
+    this.baseUrl = "http://emailvalidatorv1.vercel.app/api/v1";
+  }
+
+  async validate(emails) {
+    try {
+      const response = await axios.post(
+        `${this.baseUrl}/validate`,
+        {
+          emails: emails,
+        },
+        {
+          headers: {
+            Authorization: this.apiKey,
+          },
         }
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
     }
+  }
 }
 module.exports = EmailValidatorApiClient;
 ```
@@ -58,16 +60,17 @@ You can then use the `validate` method of the client to `validate` email address
 Here's an example of how to use the `validate` method:
 
 ```javascript
-const EmailValidatorApiClient = require('email-validator-api-client');
+const EmailValidatorApiClient = require("./email-validator-api-client");
 
 // Replace 'your_api_key_here' with your actual API key
-const apiKey = 'your_api_key_here';
+const apiKey = "your_api_key_here";
 
 const emailValidator = new EmailValidatorApiClient(apiKey);
 
-const email = 'test@example.com';
+const email = "test@example.com";
 
-emailValidator.validate(email)
+emailValidator
+  .validate(email)
   .then((validationResult) => {
     console.log(validationResult);
   })
