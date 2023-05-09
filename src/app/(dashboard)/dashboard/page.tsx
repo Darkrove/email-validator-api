@@ -1,27 +1,27 @@
-import ApiDashboard from '@/components/ApiDashboard'
-import RequestApiKey from '@/components/RequestApiKey'
-import { authOptions } from '@/lib/auth'
-import db from '@/lib/prisma'
-import { getServerSession } from 'next-auth'
-
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import ApiDashboard from "@/components/ApiDashboard";
+import RequestApiKey from "@/components/RequestApiKey";
+import { authOptions } from "@/lib/auth";
+import db from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { siteConfig } from "@/config/site";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: 'Email Validator API | Dashboard',
-  description: 'Free & open-source email Validator API',
-}
+  title: `${siteConfig.name} | Dashboard`,
+  description: siteConfig.description,
+};
 
 const page = async () => {
-  const user = await getServerSession(authOptions)
-  if (!user) return notFound()
+  const user = await getServerSession(authOptions);
+  if (!user) return notFound();
 
   const apiKey = await db.apiKey.findFirst({
     where: { userId: user.user.id, enabled: true },
-  })
+  });
 
   return (
-    <div className='max-w-7xl mx-auto mt-16'>
+    <div className="max-w-7xl mx-auto mt-16">
       {apiKey ? (
         // @ts-expect-error Server Component
         <ApiDashboard />
@@ -29,7 +29,7 @@ const page = async () => {
         <RequestApiKey />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

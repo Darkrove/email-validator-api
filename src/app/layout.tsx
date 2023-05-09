@@ -11,8 +11,8 @@ import { siteConfig } from "@/config/site";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Email Validator API | Home",
-  description: "Free and open-source email validator API",
+  title: `${siteConfig.name} | Home`,
+  description: siteConfig.description,
   keywords: [
     "Next.js",
     "React",

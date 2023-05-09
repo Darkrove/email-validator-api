@@ -1,6 +1,6 @@
-import Balance from "react-wrap-balancer"
+import Balance from "react-wrap-balancer";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function PageHeader({
   className,
@@ -14,7 +14,7 @@ function PageHeader({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PageHeaderHeading({
@@ -29,7 +29,7 @@ function PageHeaderHeading({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function PageHeaderDescription({
@@ -39,12 +39,12 @@ function PageHeaderDescription({
   return (
     <Balance
       className={cn(
-        "max-w-[750px] text-lg text-muted-foreground sm:text-xl",
+        "max-w-[750px] text-lg text-stone-900 dark:text-white sm:text-xl",
         className
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { PageHeader, PageHeaderHeading, PageHeaderDescription }
+export { PageHeader, PageHeaderHeading, PageHeaderDescription };

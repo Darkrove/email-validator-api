@@ -22,19 +22,18 @@ export default function Home() {
         <div className="h-full gap-4 flex flex-col justify-start lg:justify-center items-center lg:items-start">
           <PageHeader>
             <PageHeaderHeading className="three-d text-dark-silver dark:text-light-silver">
-              Easily validate your email.
+              Easy Email Validation
             </PageHeaderHeading>
             <PageHeaderDescription className="max-w-xl lg:text-left">
-              <Paragraph className="max-w-xl lg:text-left">
-                With the Email Validator API, you can easily validate email with
-                a free{" "}
-                <Link
-                  href="/login"
-                  className="underline underline-offset-2 text-dark-silver dark:text-light-silver"
-                >
-                  API Key
-                </Link>
-              </Paragraph>
+              Validate emails instantly and accurately with our powerful API
+              solution.{" "}
+              <Link
+                href="/login"
+                className="underline underline-offset-2 text-dark-silver dark:text-light-silver"
+              >
+                Get started
+              </Link>{" "}
+              for free today.
             </PageHeaderDescription>
           </PageHeader>
           <section className="pb-8 md:pb-10">
@@ -44,7 +43,7 @@ export default function Home() {
                   href="/documentation"
                   className={cn(buttonVariants({ size: "lg" }))}
                 >
-                  Get Started
+                  Docs
                 </Link>
                 <Link
                   target="_blank"

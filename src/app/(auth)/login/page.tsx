@@ -6,6 +6,13 @@ import UserAuthForm from "@/components/UserAuthForm";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { FC } from "react";
+import { siteConfig } from "@/config/site";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `${siteConfig.name} | Login`,
+  description: siteConfig.description,
+};
 
 const page: FC = () => {
   return (

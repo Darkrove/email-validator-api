@@ -3,10 +3,11 @@ import type { Metadata } from "next";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
 import DocumentationTabs from "@/components/DocumentationTabs";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Email Validator API | Documentation",
-  description: "Free and open-source email validator API",
+  title: `${siteConfig.name} | Documentation`,
+  description: siteConfig.description,
 };
 
 const page: FC = ({}) => {
