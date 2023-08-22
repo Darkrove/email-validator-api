@@ -4,7 +4,7 @@ import * as React from "react";
 import { ThemeProvider } from "next-themes";
 import { SessionProvider } from "next-auth/react"
 
-const Paragraph = ({ children }: { children: React.ReactNode }) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <SessionProvider>{children}</SessionProvider>
@@ -12,4 +12,4 @@ const Paragraph = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Paragraph;
+export default Providers;
