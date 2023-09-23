@@ -83,8 +83,8 @@ The `validate` method takes an email address as its parameter and returns a prom
 
 Note that the `validate` method only validates one email address at a time. If you need to validate multiple email addresses, you can call the `validate` method multiple times with different email addresses.
 
-## Contributing
+## Screens
 
-Contributions are welcome! If you find any issues with the client or want to suggest an improvement, feel free to submit a pull request or open an issue.
+![image](https://github.com/Darkrove/email-validator-api/assets/53792139/7108a2b1-6c57-4027-92e8-d5c73bb22efa)
+![image](https://github.com/Darkrove/email-validator-api/assets/53792139/7a90a88c-8fcc-4791-bdde-7023e34e0e60)
 
-See `contributing.md` for ways to get started.
